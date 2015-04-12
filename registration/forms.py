@@ -37,6 +37,11 @@ class RegistrationForm(UserCreationForm):
         model  = UserModel()
         fields = ("username", "email")
 
+    def __init__(self, *args, **kwargs):
+        super(RegistrationForm, self).__init__(*args, **kwargs)
+        for f in self.fields.values():
+            f.widget.attrs['class'] = 'form-control'
+
 
 class RegistrationFormTermsOfService(RegistrationForm):
     """
